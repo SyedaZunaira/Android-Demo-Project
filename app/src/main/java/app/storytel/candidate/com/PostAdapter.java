@@ -2,12 +2,13 @@ package app.storytel.candidate.com;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestManager;
 
@@ -36,12 +37,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         int index = new Random().nextInt(mData.mPhotos.size() - 1);
         String imageUrl = mData.mPhotos.get(index).thumbnailUrl;
         mRequestManager.load(imageUrl).into(holder.image);
-        holder.body.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mActivity.startActivity(new Intent(mActivity, DetailsActivity.class));
-            }
-        });
+        holder.body.setOnClickListener(v -> mActivity.startActivity(new Intent(mActivity, DetailsActivity.class)));
     }
 
     public void setData(PostAndImages data) {

@@ -2,12 +2,13 @@ package app.storytel.candidate.com;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -16,10 +17,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
@@ -135,9 +136,9 @@ public class ScrollingActivity extends AppCompatActivity {
              * Converts the contents of an InputStream to a String.
              */
             public String readStream(InputStream stream)
-                    throws IOException, UnsupportedEncodingException {
+                    throws IOException {
                 Reader reader = null;
-                reader = new InputStreamReader(stream, "UTF-8");
+                reader = new InputStreamReader(stream, StandardCharsets.UTF_8);
                 char[] rawBuffer = new char[256];
                 int readSize;
                 StringBuffer buffer = new StringBuffer();
