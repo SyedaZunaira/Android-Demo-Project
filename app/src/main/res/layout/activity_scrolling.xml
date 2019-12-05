@@ -48,6 +48,8 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:listData="@{masterViewModel.postAndImageLiveData}"
+            tools:listitem="@layout/post_item"
             tools:context=".ui.ListActivity"
             tools:showIn="@layout/activity_scrolling" />
 
