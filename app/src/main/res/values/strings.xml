@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Posts</string>
+    <string name="app_name">Storytel</string>
     <string name="click_me">Click Me!</string>
     <string name="not_connected">Not connected!</string>
     <string name="connected">Connected!</string>

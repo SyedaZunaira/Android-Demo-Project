@@ -1,12 +1,10 @@
 package app.storytel.candidate.com.ui
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import app.storytel.candidate.com.R
 import app.storytel.candidate.com.data.Repository
 import app.storytel.candidate.com.data.model.PostAndImages
 import app.storytel.candidate.com.utils.NetworkUtils.isConnectedToNetwork
@@ -18,27 +16,34 @@ class ListViewModel @Inject constructor(
         private val repository: Repository
 ) : ViewModel() {
 
-    private val _postAndImageLiveData: MutableLiveData<PostAndImages> = MutableLiveData()
-    val postAndImageLiveData: LiveData<PostAndImages>
-        get() = _postAndImageLiveData
+    enum class ApiStatus { LOADING, DONE, ERROR }
 
-    private val _isLoadingLiveData = MutableLiveData<Boolean>()
-    val isLoadingLiveData: LiveData<Boolean>
-        get() = _isLoadingLiveData
+    private val _postAndImage: MutableLiveData<PostAndImages> = MutableLiveData()
+    val postAndImage: LiveData<PostAndImages>
+        get() = _postAndImage
 
-    fun getAllData() {
-        if (isConnectedToNetwork(application)) {
-            _isLoadingLiveData.value = true
-            viewModelScope.launch {
-                val result = repository.getPostAndImage()
-//                if (result.isNotEmpty())
-                _postAndImageLiveData.value = result
-//                else
-//                    Toast.makeText(application, R.string.try_again, Toast.LENGTH_SHORT).show()
-                _isLoadingLiveData.value = false
-            }
-        } else
-            Toast.makeText(application, R.string.not_connected, Toast.LENGTH_SHORT).show()
+    private val _status = MutableLiveData<ApiStatus>()
+    val status: LiveData<ApiStatus>
+        get() = _status
+
+    init {
+        getAllData()
     }
 
+    private fun getAllData() {
+        if (isConnectedToNetwork(application)) {
+            viewModelScope.launch {
+                try {
+                    _status.value = ApiStatus.LOADING
+                    val result = repository.getPostAndImage()
+                    _status.value = ApiStatus.DONE
+                    _postAndImage.value = result
+                } catch (e: Exception) {
+                    _status.value = ApiStatus.ERROR
+                    _postAndImage.value = PostAndImages(emptyList(), emptyList())
+                }
+            }
+        } else
+            _status.value = ApiStatus.ERROR
+    }
 }
