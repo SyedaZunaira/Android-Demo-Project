@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="listViewModel"
             type="app.storytel.candidate.com.ui.ListViewModel" />
@@ -53,12 +55,24 @@
 
         <ImageView
             android:id="@+id/status_image"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             app:api_status="@{listViewModel.status}"
             app:mk_color="@android:color/white"
             app:mk_type="TwinFishesSpinner" />
+
+        <Button
+            android:id="@+id/retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            android:onClick="@{() -> listViewModel.getAllData()}"
+            android:text="Retry"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:visibility="@{listViewModel.status}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -11,7 +11,7 @@ import app.storytel.candidate.com.utils.NetworkUtils.isConnectedToNetwork
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class ListViewModel @Inject constructor(
+class DetailViewModel @Inject constructor(
         private val application: Application,
         private val repository: Repository
 ) : ViewModel() {
@@ -30,7 +30,7 @@ class ListViewModel @Inject constructor(
         getAllData()
     }
 
-    fun getAllData() {
+    private fun getAllData() {
         if (isConnectedToNetwork(application)) {
             viewModelScope.launch {
                 try {

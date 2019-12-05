@@ -1,6 +1,7 @@
 package app.storytel.candidate.com.utils
 
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -45,5 +46,13 @@ fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
         ApiStatus.DONE -> {
             statusImageView.visibility = View.GONE
         }
+    }
+}
+
+@BindingAdapter("android:visibility")
+fun bindStatus(button: Button, status: ApiStatus?) {
+    when (status) {
+        ApiStatus.ERROR -> button.visibility = View.VISIBLE
+        else -> button.visibility = View.GONE
     }
 }
