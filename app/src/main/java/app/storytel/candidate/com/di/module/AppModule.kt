@@ -15,7 +15,7 @@ internal class AppModule {
 
     @Singleton
     @Provides
-    fun providesPostsRetrofit(): Retrofit {
+    fun providesRetrofit(): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(AppConstants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -24,19 +24,19 @@ internal class AppModule {
 
     @Singleton
     @Provides
-    fun providePlacesApiService(retrofit: Retrofit): ApiService {
+    fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
 
     @Singleton
     @Provides
-    fun providesPlacesApiClient(apiService: ApiService): ApiClient {
+    fun providesApiClient(apiService: ApiService): ApiClient {
         return ApiClient(apiService)
     }
 
     @Singleton
     @Provides
-    fun providesPlacesRepository(apiClient: ApiClient): Repository {
+    fun providesRepository(apiClient: ApiClient): Repository {
         return Repository(apiClient)
     }
 }

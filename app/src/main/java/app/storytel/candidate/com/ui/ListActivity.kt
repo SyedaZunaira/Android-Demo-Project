@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import app.storytel.candidate.com.R
 import app.storytel.candidate.com.base.BaseApplication.Companion.getAppInjector
 import app.storytel.candidate.com.databinding.ActivityScrollingBinding
+import com.bumptech.glide.Glide
 import javax.inject.Inject
 
 class ListActivity : AppCompatActivity() {
@@ -26,8 +27,8 @@ class ListActivity : AppCompatActivity() {
 
         getAppInjector().inject(this)
 
-        val masterViewModel = ViewModelProvider(this, viewModelFactory).get(ListViewModel::class.java)
-        val adapter = ListAdapter(this)
+        val masterViewModel by lazy { ViewModelProvider(this, viewModelFactory).get(ListViewModel::class.java) }
+        val adapter = ListAdapter(Glide.with(this), this)
 
         binding.masterViewModel = masterViewModel
         binding.recyclerView.adapter = adapter
