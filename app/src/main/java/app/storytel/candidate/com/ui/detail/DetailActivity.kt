@@ -1,4 +1,4 @@
-package app.storytel.candidate.com.ui
+package app.storytel.candidate.com.ui.detail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

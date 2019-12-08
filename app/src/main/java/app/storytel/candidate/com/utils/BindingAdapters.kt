@@ -8,7 +8,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import app.storytel.candidate.com.R
 import app.storytel.candidate.com.data.model.PostAndImages
-import app.storytel.candidate.com.ui.ListAdapter
+import app.storytel.candidate.com.ui.list.ListAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
@@ -58,7 +58,7 @@ fun bindRetryButtonVisibility(button: Button, status: ApiStatus?) {
 }
 
 @BindingAdapter("android:visibility")
-fun bindNestedResyclerVisibility(view: NestedScrollView, status: ApiStatus?) {
+fun bindNestedRecyclerVisibility(view: NestedScrollView, status: ApiStatus?) {
     when (status) {
         ApiStatus.ERROR -> view.visibility = View.GONE
         else -> view.visibility = View.VISIBLE

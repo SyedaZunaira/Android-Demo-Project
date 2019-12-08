@@ -1,4 +1,4 @@
-package app.storytel.candidate.com.ui
+package app.storytel.candidate.com.ui.list
 
 import android.os.Bundle
 import android.view.Menu

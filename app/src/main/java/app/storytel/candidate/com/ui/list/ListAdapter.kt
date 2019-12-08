@@ -1,4 +1,4 @@
-package app.storytel.candidate.com.ui
+package app.storytel.candidate.com.ui.list
 
 import android.app.Activity
 import android.content.Intent
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.storytel.candidate.com.data.model.Post
 import app.storytel.candidate.com.data.model.PostAndImages
 import app.storytel.candidate.com.databinding.ListItemBinding
+import app.storytel.candidate.com.ui.detail.DetailActivity
 import app.storytel.candidate.com.utils.AppConstants.IMAGE_KEY
 import app.storytel.candidate.com.utils.AppConstants.POST_KEY
 import java.util.*
