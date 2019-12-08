@@ -19,20 +19,16 @@ class DetailViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _imageUrl = MutableLiveData<String>()
-    val imageUrl: LiveData<String>
-        get() = _imageUrl
+    val imageUrl: LiveData<String> = _imageUrl
 
     private val _post = MutableLiveData<Post>()
-    val post: LiveData<Post>
-        get() = _post
+    val post: LiveData<Post> = _post
 
     private val _comments: MutableLiveData<List<Comment>> = MutableLiveData()
-    val comments: LiveData<List<Comment>>
-        get() = _comments
+    val comments: LiveData<List<Comment>> = _comments
 
     private val _status = MutableLiveData<ApiStatus>()
-    val status: LiveData<ApiStatus>
-        get() = _status
+    val status: LiveData<ApiStatus> = _status
 
     fun setData(imageUrl: String, post: Post) {
         this._imageUrl.value = imageUrl

@@ -18,12 +18,10 @@ class ListViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _postAndImage: MutableLiveData<PostAndImages> = MutableLiveData()
-    val postAndImage: LiveData<PostAndImages>
-        get() = _postAndImage
+    val postAndImage: LiveData<PostAndImages> = _postAndImage
 
     private val _status = MutableLiveData<ApiStatus>()
-    val status: LiveData<ApiStatus>
-        get() = _status
+    val status: LiveData<ApiStatus> = _status
 
     init {
         getAllData()
