@@ -15,7 +15,7 @@ import java.util.*
 
 class ListAdapter(private val activity: Activity) : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
-    private var data: PostAndImages = PostAndImages(mutableListOf(), mutableListOf())
+    private var data: PostAndImages = PostAndImages(emptyList(), emptyList())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

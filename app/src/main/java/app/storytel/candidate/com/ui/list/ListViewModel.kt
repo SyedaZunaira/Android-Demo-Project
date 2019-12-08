@@ -17,7 +17,7 @@ class ListViewModel @Inject constructor(
         private val repository: Repository
 ) : ViewModel() {
 
-    private val _postAndImage: MutableLiveData<PostAndImages> = MutableLiveData()
+    private val _postAndImage = MutableLiveData<PostAndImages>()
     val postAndImage: LiveData<PostAndImages> = _postAndImage
 
     private val _status = MutableLiveData<ApiStatus>()

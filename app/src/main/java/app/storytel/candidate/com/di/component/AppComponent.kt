@@ -14,7 +14,7 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(listActivity: ListActivity)
-    fun inject(listActivity: DetailActivity)
+    fun inject(detailActivity: DetailActivity)
 
     @Component.Builder
     interface Builder {
