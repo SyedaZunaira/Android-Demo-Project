@@ -8,7 +8,7 @@
         <import type="android.view.View" />
 
         <variable
-            name="listViewModel"
+            name="viewModel"
             type="app.storytel.candidate.com.ui.ListViewModel" />
     </data>
 
@@ -50,7 +50,7 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:listData="@{listViewModel.postAndImage}"
+            app:listData="@{viewModel.postAndImage}"
             tools:listitem="@layout/list_item" />
 
         <ImageView
@@ -58,7 +58,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            app:api_status="@{listViewModel.status}"
+            android:contentDescription="@string/backdrop_image"
+            app:api_status="@{viewModel.status}"
             app:mk_color="@android:color/white"
             app:mk_type="TwinFishesSpinner" />
 
@@ -68,11 +69,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="80dp"
-            android:onClick="@{() -> listViewModel.getAllData()}"
-            android:text="Retry"
+            android:onClick="@{() -> viewModel.getAllData()}"
+            android:text="@string/retry"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary"
-            android:visibility="@{listViewModel.status}" />
+            android:visibility="@{viewModel.status}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

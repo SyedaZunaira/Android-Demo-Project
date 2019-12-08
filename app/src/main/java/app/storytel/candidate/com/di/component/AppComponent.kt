@@ -3,6 +3,7 @@ package app.storytel.candidate.com.di.component
 import android.app.Application
 import app.storytel.candidate.com.di.module.AppModule
 import app.storytel.candidate.com.di.module.ViewModelModule
+import app.storytel.candidate.com.ui.DetailActivity
 import app.storytel.candidate.com.ui.ListActivity
 import dagger.BindsInstance
 import dagger.Component
@@ -13,6 +14,7 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(listActivity: ListActivity)
+    fun inject(listActivity: DetailActivity)
 
     @Component.Builder
     interface Builder {

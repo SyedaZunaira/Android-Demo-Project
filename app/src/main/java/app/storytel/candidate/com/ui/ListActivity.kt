@@ -23,7 +23,7 @@ class ListActivity : AppCompatActivity() {
 
         val listViewModel by lazy { ViewModelProvider(this, viewModelFactory).get(ListViewModel::class.java) }
 
-        binding.listViewModel = listViewModel
+        binding.viewModel = listViewModel
         binding.recyclerView.adapter = ListAdapter(this)
         binding.lifecycleOwner = this
     }

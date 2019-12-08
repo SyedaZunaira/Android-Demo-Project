@@ -3,6 +3,7 @@ package app.storytel.candidate.com.di.module
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import app.storytel.candidate.com.di.util.ViewModelKey
+import app.storytel.candidate.com.ui.DetailViewModel
 import app.storytel.candidate.com.ui.ListViewModel
 import app.storytel.candidate.com.utils.ViewModelFactory
 import dagger.Binds
@@ -18,6 +19,11 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(ListViewModel::class)
-    internal abstract fun bindsMainViewModel(viewModel: ListViewModel): ViewModel
+    internal abstract fun bindsListViewModel(viewModel: ListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DetailViewModel::class)
+    internal abstract fun bindsDetailViewModel(viewModel: DetailViewModel): ViewModel
 
 }

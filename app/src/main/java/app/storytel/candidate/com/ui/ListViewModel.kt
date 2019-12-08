@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import app.storytel.candidate.com.data.Repository
 import app.storytel.candidate.com.data.model.PostAndImages
+import app.storytel.candidate.com.utils.ApiStatus
 import app.storytel.candidate.com.utils.NetworkUtils.isConnectedToNetwork
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,8 +16,6 @@ class ListViewModel @Inject constructor(
         private val application: Application,
         private val repository: Repository
 ) : ViewModel() {
-
-    enum class ApiStatus { LOADING, DONE, ERROR }
 
     private val _postAndImage: MutableLiveData<PostAndImages> = MutableLiveData()
     val postAndImage: LiveData<PostAndImages>

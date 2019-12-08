@@ -3,12 +3,12 @@ package app.storytel.candidate.com.utils
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import androidx.core.widget.NestedScrollView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import app.storytel.candidate.com.R
 import app.storytel.candidate.com.data.model.PostAndImages
 import app.storytel.candidate.com.ui.ListAdapter
-import app.storytel.candidate.com.ui.ListViewModel.ApiStatus
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
@@ -50,9 +50,17 @@ fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
 }
 
 @BindingAdapter("android:visibility")
-fun bindStatus(button: Button, status: ApiStatus?) {
+fun bindRetryButtonVisibility(button: Button, status: ApiStatus?) {
     when (status) {
         ApiStatus.ERROR -> button.visibility = View.VISIBLE
         else -> button.visibility = View.GONE
+    }
+}
+
+@BindingAdapter("android:visibility")
+fun bindNestedResyclerVisibility(view: NestedScrollView, status: ApiStatus?) {
+    when (status) {
+        ApiStatus.ERROR -> view.visibility = View.GONE
+        else -> view.visibility = View.VISIBLE
     }
 }
