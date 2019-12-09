@@ -59,9 +59,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:contentDescription="@string/backdrop_image"
-            app:api_status="@{viewModel.status}"
-            app:mk_color="@android:color/white"
-            app:mk_type="TwinFishesSpinner" />
+            app:api_status="@{viewModel.status}" />
 
         <Button
             android:id="@+id/retry"

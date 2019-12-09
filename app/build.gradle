@@ -49,6 +49,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.google.android.material:material:$materialVersion"
 
     //Architecture components
     implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
@@ -58,10 +59,6 @@ dependencies {
     // Dagger
     implementation "com.google.dagger:dagger:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-
-    // Progressbar
-    implementation "com.tuyenmonkey:mkloader:$progressBarVersion"
-    implementation "com.google.android.material:material:$materialVersion"
 
     // Unit tests
     testImplementation "junit:junit:$junitVersion"
