@@ -24,10 +24,10 @@ class ListViewModel @Inject constructor(
     val status: LiveData<ApiStatus> = _status
 
     init {
-        getAllData()
+        getPostAndImageData()
     }
 
-    fun getAllData() {
+    fun getPostAndImageData() {
         if (isConnectedToNetwork(application)) {
             viewModelScope.launch {
                 try {

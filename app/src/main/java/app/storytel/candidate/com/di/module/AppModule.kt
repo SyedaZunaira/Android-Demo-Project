@@ -6,8 +6,10 @@ import app.storytel.candidate.com.data.rest.ApiService
 import app.storytel.candidate.com.utils.AppConstants
 import dagger.Module
 import dagger.Provides
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -16,8 +18,12 @@ internal class AppModule {
     @Singleton
     @Provides
     fun providesRetrofit(): Retrofit {
+        val client = OkHttpClient.Builder()
+                .connectTimeout(5, TimeUnit.SECONDS)
+                .build()
         return Retrofit.Builder()
                 .baseUrl(AppConstants.BASE_URL)
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }
