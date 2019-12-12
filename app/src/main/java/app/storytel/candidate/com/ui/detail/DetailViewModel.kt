@@ -1,6 +1,5 @@
 package app.storytel.candidate.com.ui.detail
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,12 +8,11 @@ import app.storytel.candidate.com.data.Repository
 import app.storytel.candidate.com.data.model.Comment
 import app.storytel.candidate.com.data.model.Post
 import app.storytel.candidate.com.utils.ApiStatus
-import app.storytel.candidate.com.utils.NetworkUtils.isConnectedToNetwork
+import app.storytel.candidate.com.utils.NetworkUtils
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class DetailViewModel @Inject constructor(
-        private val application: Application,
+class DetailViewModel(
+        private val networkUtils: NetworkUtils,
         private val repository: Repository
 ) : ViewModel() {
 
@@ -37,7 +35,7 @@ class DetailViewModel @Inject constructor(
     }
 
     fun getComments(id: Int) {
-        if (isConnectedToNetwork(application)) {
+        if (networkUtils.isConnectedToNetwork()) {
             viewModelScope.launch {
                 try {
                     _status.value = ApiStatus.LOADING

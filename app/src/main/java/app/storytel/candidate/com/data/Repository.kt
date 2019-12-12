@@ -3,9 +3,8 @@ package app.storytel.candidate.com.data
 import app.storytel.candidate.com.data.model.Comment
 import app.storytel.candidate.com.data.model.PostAndImages
 import app.storytel.candidate.com.data.rest.ApiClient
-import javax.inject.Inject
 
-class Repository @Inject constructor(private val apiClient: ApiClient) {
+class Repository(private val apiClient: ApiClient) {
 
     suspend fun getPostAndImage(): PostAndImages {
         val posts = apiClient.getAllPosts()

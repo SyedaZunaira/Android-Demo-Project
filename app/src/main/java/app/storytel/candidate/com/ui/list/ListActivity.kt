@@ -5,23 +5,17 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import app.storytel.candidate.com.R
-import app.storytel.candidate.com.base.BaseApplication.Companion.getAppInjector
 import app.storytel.candidate.com.databinding.ActivityListBinding
-import javax.inject.Inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListActivity : AppCompatActivity() {
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityListBinding = DataBindingUtil.setContentView(this, R.layout.activity_list)
 
-        getAppInjector().inject(this)
-
-        val listViewModel by lazy { ViewModelProvider(this, viewModelFactory).get(ListViewModel::class.java) }
+        val listViewModel by viewModel<ListViewModel>()
 
         binding.viewModel = listViewModel
         binding.recyclerView.adapter = ListAdapter(this)

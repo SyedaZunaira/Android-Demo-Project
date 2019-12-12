@@ -1,6 +1,5 @@
 package app.storytel.candidate.com.ui.list
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,12 +7,11 @@ import androidx.lifecycle.viewModelScope
 import app.storytel.candidate.com.data.Repository
 import app.storytel.candidate.com.data.model.PostAndImages
 import app.storytel.candidate.com.utils.ApiStatus
-import app.storytel.candidate.com.utils.NetworkUtils.isConnectedToNetwork
+import app.storytel.candidate.com.utils.NetworkUtils
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class ListViewModel @Inject constructor(
-        private val application: Application,
+class ListViewModel(
+        private val networkUtils: NetworkUtils,
         private val repository: Repository
 ) : ViewModel() {
 
@@ -28,7 +26,7 @@ class ListViewModel @Inject constructor(
     }
 
     fun getPostAndImageData() {
-        if (isConnectedToNetwork(application)) {
+        if (networkUtils.isConnectedToNetwork()) {
             viewModelScope.launch {
                 try {
                     _status.value = ApiStatus.LOADING

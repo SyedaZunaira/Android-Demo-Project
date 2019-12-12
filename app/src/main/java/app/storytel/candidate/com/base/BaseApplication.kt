@@ -1,24 +1,17 @@
 package app.storytel.candidate.com.base
 
 import android.app.Application
-import app.storytel.candidate.com.di.component.AppComponent
-import app.storytel.candidate.com.di.component.DaggerAppComponent
+import app.storytel.candidate.com.di.appModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 class BaseApplication : Application() {
 
-    companion object {
-        private lateinit var appComponent: AppComponent
-        fun getAppInjector(): AppComponent {
-            return appComponent
-        }
-    }
-
     override fun onCreate() {
         super.onCreate()
-
-        appComponent = DaggerAppComponent.builder()
-                .application(this)
-                .build()
+        startKoin {
+            androidContext(this@BaseApplication)
+            modules(listOf(appModule))
+        }
     }
-
 }
